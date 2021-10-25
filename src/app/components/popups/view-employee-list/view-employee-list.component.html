@@ -1,0 +1,45 @@
+<app-modal-wrapper [size]="'modal-lg'" #addEmployeeListModalWrapper title="Nhân viên lương thấp hơn trung bình" (hideEvent)="onHideEvent()">
+    <div class="modal-body">
+      <div class="row pt-2">
+        <div class="card-body table-responsive p-0">
+          <table class="table table-head-fixed text-nowrap">
+            <thead>
+            <tr>
+              <th>Họ tên</th>
+              <th>Email</th>
+              <th>Số điện thoại</th>
+              <th>Lương cơ bản</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let e of employeeList; let i = index">
+              <td>{{e.name}}</td>
+              <td>{{e.email}}</td>
+              <td>{{e.phone}}</td>
+              <td>{{e.basicSalary | number}}</td>
+              <td>
+                <app-dropdown-menu>
+                  <a class="dropdown-item text-red" (click)="removeFromList(i)">
+                    <i class="far fa-trash-alt mr-1"></i>
+                    Xóa
+                  </a>
+                </app-dropdown-menu>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer justify-content-between">
+      <button (click)="hide()" type="button" class="btn btn-default">
+        <i class="fas fa-times mr-1"></i>
+        Đóng
+      </button>
+      <button type="submit" class="btn btn-primary" (click)="onSave()">
+        <i class="far fa-save mr-1"></i>
+        Lưu
+      </button>
+    </div>
+</app-modal-wrapper>

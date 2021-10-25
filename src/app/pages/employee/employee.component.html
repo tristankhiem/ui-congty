@@ -1,0 +1,93 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 font-weight-bold text-gray-dark">QUẢN LÝ NHÂN VIÊN</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a routerLink="/">Trang chủ</a></li>
+          <li class="breadcrumb-item active">Quản lý nhân viên</li>
+        </ol>
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="row justify-content-end pt-2 pb-2 pr-2 float-right">
+            <div class="text-center float-right">
+              <button (click)="viewEmployeeListComponent.show()" class="btn btn-primary mr-2">
+                <i class="fas fa-list mr-1-"></i>
+                Xem danh sách
+              </button>
+              <button (click)="addEmployeeListComponent.show()" class="btn btn-success mr-2">
+                <i class="fas fa-plus mr-1"></i>
+                Thêm danh sách
+              </button>
+              <button (click)="addEmployeeComponent.show()" class="btn btn-success">
+                <i class="fas fa-plus mr-1"></i>
+                Thêm nhân viên
+              </button>
+            </div>
+          </div>
+            <div class="card-body table-responsive p-0">
+              <table class="table table-head-fixed text-nowrap">
+                <thead>
+                <tr>
+                  <th>Họ tên</th>
+                  <th>Email</th>
+                  <th>Số điện thoại</th>
+                  <th>Tuổi</th>
+                  <th>Loại NV</th>
+                  <th>Lương cơ bản</th>
+                  <th>Số giờ tăng ca</th>
+                  <th>Số Bug tìm được</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let e of search">
+                  <td>{{e.name}}</td>
+                  <td>{{e.email}}</td>
+                  <td>{{e.phone}}</td>
+                  <td>{{e.age}}</td>
+                  <td>{{e.employeeType}}</td>
+                  <td>{{e.basicSalary | number}}</td>
+                  <td>{{e.overtimeHour}}</td>
+                  <td>{{e.numberOfBugs}}</td>
+                  <td>
+                    <app-dropdown-menu>
+                      <a class="dropdown-item text-cyan" href="#" (click)="updateEmployeeComponent.show(e, $event)">
+                        <i class="far fa-edit"></i>
+                        Sửa
+                      </a>
+                      <a class="dropdown-item text-red" href="#" (click)="openDeleteModal(e, $event)">
+                        <i class="far fa-trash-alt mr-1"></i>
+                        Xóa
+                      </a>
+                    </app-dropdown-menu>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-add-employee #addEmployeeComponent (saveCompleted)="onChangeDataEvent()"></app-add-employee>
+<app-update-employee #updateEmployeeComponent (saveCompleted)="onChangeDataEvent()"></app-update-employee>
+<app-add-employee-list #addEmployeeListComponent (saveCompleted)="onChangeDataEvent()"></app-add-employee-list>
+<app-view-employee-list #viewEmployeeListComponent></app-view-employee-list>

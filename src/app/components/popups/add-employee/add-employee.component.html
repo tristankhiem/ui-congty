@@ -1,0 +1,53 @@
+<app-modal-wrapper [size]="'modal-lg'" #addEmployeeModalWrapper title="Thêm nhân viên" (hideEvent)="onHideEvent()">
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        <label>Tên nhân viên</label>
+        <input type="text" class="form-control" [(ngModel)]="newEmployee.name" placeholder="Tên nhân viên"/>
+      </div>
+      <div class="col-sm-4 form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" [(ngModel)]="newEmployee.email" placeholder="Email"/>
+      </div>
+      <div class="col-sm-4 form-group">
+        <label>Số điện thoại</label>
+        <input type="text" class="form-control" [(ngModel)]="newEmployee.phone" placeholder="Số điện thoại"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 form-group">
+        <label>Tuổi</label>
+        <input type="number" class="form-control" [(ngModel)]="newEmployee.age" placeholder="Tuổi"/>
+      </div>
+      <div class="col-sm-3 form-group">
+        <label>Loại nhân viên</label>
+        <select class="custom-select" [(ngModel)]="newEmployee.employeeType">
+          <option [value]="'DEV'">Lập trình viên</option>
+          <option [value]="'TESTER'">Kiểm thử viên</option>
+        </select>
+      </div>
+      <div class="col-sm-3 form-group">
+        <label>Lương cơ bản</label>
+        <input type="number" class="form-control" [(ngModel)]="newEmployee.basicSalary" placeholder="Lương cơ bản"/>
+      </div>
+      <div *ngIf="newEmployee.employeeType == 'DEV'" class="col-sm-3 form-group">
+        <label>Số giờ tăng ca</label>
+        <input type="number" class="form-control" [(ngModel)]="newEmployee.overtimeHour" placeholder="Số giờ tăng ca"/>
+      </div>
+      <div *ngIf="newEmployee.employeeType == 'TESTER'" class="col-sm-3 form-group">
+        <label>Số bug tìm được</label>
+        <input type="number" class="form-control" [(ngModel)]="newEmployee.numberOfBugs" placeholder="Số bug tìm được"/>
+      </div>
+    </div>
+  </div>
+    <div class="modal-footer justify-content-between">
+      <button (click)="hide()" type="button" class="btn btn-default">
+        <i class="fas fa-times mr-1"></i>
+        Đóng
+      </button>
+      <button type="submit" class="btn btn-primary" (click)="onSave()">
+        <i class="far fa-save mr-1"></i>
+        Lưu
+      </button>
+    </div>
+</app-modal-wrapper>
