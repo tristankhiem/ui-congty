@@ -49,7 +49,7 @@ export class ViewEmployeeListComponent implements AfterViewInit {
 
   public show(): void {
     this.onInit();
-    this.newEmployee.employeeType = 'DEV';
+    this.getEmployeeList();
     this.addEmployeeListModalWrapper.show();
   }
 
@@ -63,7 +63,7 @@ export class ViewEmployeeListComponent implements AfterViewInit {
 
   public onSave(): void {
 
-    this.saveEmployeeList();
+    this.getEmployeeList();
   }
 
   public addToList(): void {
@@ -76,15 +76,14 @@ export class ViewEmployeeListComponent implements AfterViewInit {
     this.employeeList.splice(index, 1);
   }
 
-  private saveEmployeeList(): void {
+  private getEmployeeList(): void {
     this.loading.show(this.targetModalLoading);
 
-    this.employeeService.save(this.newEmployee).subscribe(res => this.saveEmployeeListCompleted(res));
+    this.employeeService.getList().subscribe(res => this.getEmployeeListCompleted(res));
   }
 
-  private saveEmployeeListCompleted(res: any): void {
+  private getEmployeeListCompleted(res: any): void {
     this.loading.hide(this.targetModalLoading);
-    this.saveCompleted.emit();
-    this.hide();
+    this.employeeList = res;
   }
 }

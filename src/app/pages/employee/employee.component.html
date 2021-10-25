@@ -34,10 +34,6 @@
                 <i class="fas fa-plus mr-1"></i>
                 Thêm danh sách
               </button>
-              <button (click)="addEmployeeComponent.show()" class="btn btn-success">
-                <i class="fas fa-plus mr-1"></i>
-                Thêm nhân viên
-              </button>
             </div>
           </div>
             <div class="card-body table-responsive p-0">
@@ -67,10 +63,6 @@
                   <td>{{e.numberOfBugs}}</td>
                   <td>
                     <app-dropdown-menu>
-                      <a class="dropdown-item text-cyan" href="#" (click)="updateEmployeeComponent.show(e, $event)">
-                        <i class="far fa-edit"></i>
-                        Sửa
-                      </a>
                       <a class="dropdown-item text-red" href="#" (click)="openDeleteModal(e, $event)">
                         <i class="far fa-trash-alt mr-1"></i>
                         Xóa

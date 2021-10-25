@@ -79,7 +79,7 @@ export class AddEmployeeListComponent implements AfterViewInit {
   private saveEmployeeList(): void {
     this.loading.show(this.targetModalLoading);
 
-    this.employeeService.save(this.newEmployee).subscribe(res => this.saveEmployeeListCompleted(res));
+    this.employeeService.save(this.employeeList).subscribe(res => this.saveEmployeeListCompleted(res));
   }
 
   private saveEmployeeListCompleted(res: any): void {

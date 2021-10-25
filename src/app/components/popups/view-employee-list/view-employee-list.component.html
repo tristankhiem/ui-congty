@@ -9,7 +9,6 @@
               <th>Email</th>
               <th>Số điện thoại</th>
               <th>Lương cơ bản</th>
-              <th></th>
             </tr>
             </thead>
             <tbody>
@@ -18,14 +17,6 @@
               <td>{{e.email}}</td>
               <td>{{e.phone}}</td>
               <td>{{e.basicSalary | number}}</td>
-              <td>
-                <app-dropdown-menu>
-                  <a class="dropdown-item text-red" (click)="removeFromList(i)">
-                    <i class="far fa-trash-alt mr-1"></i>
-                    Xóa
-                  </a>
-                </app-dropdown-menu>
-              </td>
             </tr>
             </tbody>
           </table>
